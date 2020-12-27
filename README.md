@@ -9,18 +9,22 @@
 cd service && yarn
 ```
 
+```
 前端
 cd client && yarn
+```
 
 # 前端启动
+
+```
 
 根目录下执行
 yarn start-client || (cd client && yarn start)
 
 ```
 
-```
-
 # 服务端启动
 
+```
 服务端暂时没有完善
+```
