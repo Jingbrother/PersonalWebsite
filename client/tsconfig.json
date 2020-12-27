@@ -1,0 +1,38 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "allowSyntheticDefaultImports": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "allowJs": true,
+    "checkJs": false,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "noEmitHelpers": true,
+    "downlevelIteration": true,
+    "importHelpers": true,
+    "sourceRoot": ".",
+    "baseUrl": ".",
+    "paths": {
+      "lib/*": ["src/lib/*"],
+      "src/*": ["src/*"],
+      "styles/*": ["src/styles/*"]
+    },
+    "jsx": "react",
+    "lib": ["dom", "es2018"]
+  },
+  "exclude": ["dist", ".awcache", "node_modules", "src/common/cfca/cfca.js"],
+  "include": ["src", "./definitions"],
+  "awesomeTypescriptLoaderOptions": {
+    "useCache": true,
+    "useBabel": true,
+    "babelCore": "@babel/core",
+    "reportFiles": ["src/**/*.{ts,tsx}"]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "w",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start-client": "cd client && NODE_ENV=development npx webpack-dev-server --hot --mode development",
+    "bulid-client": "cd client && webpack --config webpack.config.js"
+  }
+}

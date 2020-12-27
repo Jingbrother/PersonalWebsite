@@ -1,14 +1,12 @@
 {
-  "name": "personal-website",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "service",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "hotnode app.js"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "koa": "^2.0.0",
+    "koa-router": "^10.0.0"
   }
 }

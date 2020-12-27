@@ -1,11 +1,10 @@
-const express = require("express");
-const app = express();
-app.use("/public", express.static("public"));
-app.get("/", function (req, res) {
-  res.send("Hello World");
+const Koa = require("koa");
+const Router = require("koa-router");
+const router = new Router();
+const app = new Koa();
+router.get("/", async (ctx, next) => {
+  ctx.response.body = "<h5>Index</h5>";
 });
-var server = app.listen(8080, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-  console.log("Node.JS 服务器已启动，访问地址： http://%s:%s", host, port);
-});
+app.use(router.routes()).use(router.allowedMethods());
+app.listen(3000);
+console.log("服务启动成功*****");
