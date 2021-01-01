@@ -1,13 +1,16 @@
-import a from "./a";
-const initialState = {
-  ...a,
+import test from "./test";
+interface Iobj {
+  type?: any;
+  value?: any;
+}
+const initialState: any = {
+  ...test,
 };
 
 const reducer = (state = initialState, action) => {
-  const { type } = action;
-  let obj = {};
+  let obj: Iobj = {};
   for (let key in action) {
-    if (key !== "type") {
+    if (action[key] !== "SET_STORE") {
       obj = {
         type: key,
         value: action[key],

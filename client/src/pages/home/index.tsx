@@ -1,21 +1,27 @@
 import React from "react";
 import { connect } from "react-redux";
 import { setStore } from "../../store/action";
+import { IState } from "../../store/type";
 import s from "./index.m.scss";
 interface IHomeProps {
   num: number;
-  setNum: (v) => void;
+  setStore: (v: IState) => void;
+  sss: number;
 }
 class Home extends React.Component<IHomeProps> {
   render() {
-    const { num, setNum } = this.props;
+    const { num, setStore, sss } = this.props;
     return (
       <div>
-        <div className={s["a"]}>{num}</div>
+        <div className={s["a"]}>
+          {num}
+          {sss}
+        </div>
         <button
           onClick={() => {
-            setNum({
+            setStore({
               num: num + 1,
+              sss: num + 1,
             });
           }}
         >
@@ -27,12 +33,14 @@ class Home extends React.Component<IHomeProps> {
 }
 
 export default connect(
-  (state) => ({
-    num: state.num,
-  }),
-  (display) => {
+  (state) => {
+    const { num, sss } = state;
     return {
-      setNum: (state) => setStore(display, state),
+      num,
+      sss,
     };
-  }
+  },
+  () => ({
+    setStore: (state: IState) => setStore(state),
+  })
 )(Home);
