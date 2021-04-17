@@ -41,8 +41,11 @@
     "xml-loader": "^1.2.1"
   },
   "dependencies": {
+    "@ant-design/icons": "^4.6.2",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@uiw/react-clock": "^1.1.2",
+    "antd": "^4.15.1",
     "autoprefixer": "^9.3.1",
     "awesome-typescript-loader": "^5.2.1",
     "classnames": "^2.2.6",
