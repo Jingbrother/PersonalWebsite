@@ -11,3 +11,13 @@
     right:100px;
     top:50px
 }
+.code{
+    position:fixed;
+    left:100px;
+    .line{
+        height: 40px;
+        width: 20px;
+        border-left: dashed 1px red;
+        margin-left: 15px;
+    }   
+}

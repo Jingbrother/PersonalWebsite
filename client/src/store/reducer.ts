@@ -1,10 +1,10 @@
-import test from "./test";
+import Home from './404'
 interface Iobj {
   type?: any;
   value?: any;
 }
 const initialState: any = {
-  ...test,
+  ...Home,
 };
 
 const reducer = (state = initialState, action) => {
