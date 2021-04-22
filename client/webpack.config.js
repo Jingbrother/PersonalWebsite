@@ -55,8 +55,8 @@ module.exports = {
     new TsconfigPathsPlugin(),
     new webpack.ProgressPlugin(),
     new MiniCssExtractPlugin({
-      filename: isDevEnv ? "[name].css" : "[name]_[contenthash].css",
-      chunkFilename: isDevEnv ? "[id].css" : "[id]_[chunkhash].css",
+      filename: isDevEnv ? "[name].css" : "[name].css",
+      chunkFilename: isDevEnv ? "[id].css" : "[id].css",
     }),
   ],
   devServer: {

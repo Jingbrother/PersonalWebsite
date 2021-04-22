@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development npx webpack-dev-server --hot --mode development",
+    "start": "npx webpack-dev-server --hot --mode development",
     "bulid": "webpack --config webpack.config.js"
   },
   "author": "",
