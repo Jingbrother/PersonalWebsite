@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//对比code是否存在
-const contrast = (req, res, next) => {
-    res.send('对比成功');
-}
-router.post('/contrast', contrast);
+const Fun = require('./fun/code')
+//对比code是否存在*接口
+router.post('/contrast', Fun.contrast);
 module.exports = router;

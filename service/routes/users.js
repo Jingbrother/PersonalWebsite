@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-//登录接口
-const login = (req, res, next) => {
-  res.send('登录成功');
-}
-router.get('/login', login);
+const Fun = require('./fun/users')
+//登录*接口
+router.get('/login', Fun.login);
 module.exports = router;
