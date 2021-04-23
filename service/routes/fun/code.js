@@ -1,6 +1,10 @@
 //对比code是否存在*处理函数
 const contrast = (req, res, next) => {
-    res.send('对比成功');
+    res.json({
+        code:0,
+        data:true,
+        state:'code对比一致'
+    });
 }
 module.exports = {
     contrast

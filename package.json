@@ -4,6 +4,7 @@
   "description": "",
   "scripts": {
     "start-client": "cd client && NODE_ENV=development npx webpack-dev-server --hot --mode development",
-    "bulid-client": "cd client && webpack --config webpack.config.js"
+    "bulid-client": "cd client && webpack --config webpack.config.js",
+    "service": "cd service && nodemon app.js"
   }
 }

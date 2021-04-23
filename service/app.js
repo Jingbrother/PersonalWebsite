@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const mongoose = require('mongoose');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const debug = require('debug')('service:server');
@@ -91,6 +92,18 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+const options = {
+  db_user: "wangjingren",
+  db_pwd: "199661",
+  db_host: "121.5.65.243",
+  db_port: 27017,
+  db_name: "PersonalWebsite",//数据库名称
+  useNewUrlParser: true
+}
+const dbURL = "mongodb://wangjingren:199661@121.5.65.243:27017/PersonalWebsite?authSource=admin";
+mongoose.connect(dbURL,{ useNewUrlParser: true, useUnifiedTopology: true })
+.then(() => console.log('数据库连接成功'))
+.catch((err) => console.log('数据库连接失败',err));
 console.log('\x1b[36m%s\x1b[0m',`
 
 
