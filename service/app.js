@@ -11,6 +11,8 @@ const usersRouter = require('./routes/users');
 const codeRouter = require('./routes/code');
 
 const app = express();
+//数据库URL
+const dbURL = "mongodb://wangjingren:199661@121.5.65.243:27017/PersonalWebsite?authSource=admin";
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,7 +23,17 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.all('*',function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With');
+  res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
+  if (req.method == 'OPTIONS') {
+    res.send(200);
+  }
+  else {
+    next();
+  }
+});
 app.use('/users', usersRouter);
 app.use('/code', codeRouter);
 
@@ -92,17 +104,9 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
-const options = {
-  db_user: "wangjingren",
-  db_pwd: "199661",
-  db_host: "121.5.65.243",
-  db_port: 27017,
-  db_name: "PersonalWebsite",//数据库名称
-  useNewUrlParser: true
-}
-const dbURL = "mongodb://wangjingren:199661@121.5.65.243:27017/PersonalWebsite?authSource=admin";
+//数据库链接
 mongoose.connect(dbURL,{ useNewUrlParser: true, useUnifiedTopology: true })
-.then(() => console.log('数据库连接成功'))
+.then(() => console.log('\x1b[36m%s\x1b[0m','数据库连接成功'))
 .catch((err) => console.log('数据库连接失败',err));
 console.log('\x1b[36m%s\x1b[0m',`
 

@@ -4,24 +4,33 @@ import { connect } from "react-redux";
 import s from './index.m.scss'
 import { setStore } from "../../store/action";
 import ReactClock from '@uiw/react-clock';
-import codeList from '../../users/code'
 import { host } from '../../utils/config'
 import { BugOutlined } from '@ant-design/icons';
+import {getCode} from '../../service/code'
 interface IFindProps {
     numberValueOne: any;
     numberValueTwo: any;
     numberValueThree: any;
+    isCode:boolean;
 }
-const Find: React.FC<IFindProps> = ({ numberValueOne, numberValueTwo, numberValueThree }) => {
+const Find: React.FC<IFindProps> = ({ numberValueOne, numberValueTwo, numberValueThree ,isCode}) => {
     const [isModalVisible, setIsModalVisible] = useState<boolean>(true)
-    const [isCode, setIsCode] = useState<boolean>(false)
+    const [isCodeLoading,setIsCodeLoading] = useState<boolean>(false)
     const codeValidation = () => {
-        codeList.forEach(item => {
-            if (item.one === numberValueOne && item.two === numberValueTwo && item.three === numberValueThree) {
-                setIsCode(true)
-            }
-        });
-        setIsModalVisible(false)
+        if(typeof numberValueOne==='number' && typeof numberValueTwo==='number' && typeof numberValueThree==='number' ){
+            setIsCodeLoading(true)
+            getCode({
+                best:numberValueOne,
+                ten:numberValueTwo,
+                a:numberValueThree
+            })
+            .then(()=>{
+                setIsCodeLoading(false)
+                setIsModalVisible(false)
+            })
+        }else{
+            setIsModalVisible(false)
+        }
     }
     return (
         <div>
@@ -32,7 +41,18 @@ const Find: React.FC<IFindProps> = ({ numberValueOne, numberValueTwo, numberValu
                 </div> : ''
             }
 
-            <Modal visible={isModalVisible} onCancel={() => setIsModalVisible(false)} onOk={codeValidation}>
+            <Modal 
+                visible={isModalVisible} 
+                onCancel={() => setIsModalVisible(false)} 
+                footer={[
+                    <Button key="back" onClick={() => setIsModalVisible(false)}>
+                      取消
+                    </Button>,
+                    <Button key="submit" type="primary" loading={isCodeLoading} onClick={codeValidation}>
+                      确定
+                    </Button>
+                  ]}
+            >
                 <div>
                     <div>程序员小哥哥正在加速建设中，敬请期待！！！</div>
                     <div style={{ marginTop: 15 }}>
@@ -56,11 +76,12 @@ const Find: React.FC<IFindProps> = ({ numberValueOne, numberValueTwo, numberValu
 }
 export default connect(
     (state) => {
-        const { numberValueOne, numberValueTwo, numberValueThree } = state;
+        const { numberValueOne, numberValueTwo, numberValueThree,isCode } = state;
         return {
             numberValueOne,
             numberValueTwo,
-            numberValueThree
+            numberValueThree,
+            isCode
         };
     }
 )(Find);
