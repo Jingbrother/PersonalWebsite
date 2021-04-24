@@ -46,6 +46,6 @@ url:users/login
 请求方式：post
 参数json：{
     name:string,//用户名
-    password:number,//密码
+    password:string,//密码
 }
 ```
