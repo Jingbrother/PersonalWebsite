@@ -19,9 +19,15 @@ export const setStore = (state: IState) => {
     );
   }
   for (let key in state) {
-    store.dispatch({
-      type: "SET_STORE",
-      [key]: state[key],
-    });
+    if(key === 'type'){
+      throw new Error(
+        "setStore的参数中key值不得是type,应为其他:{[key: string]: any;}"
+      );
+    }else{
+      store.dispatch({
+        type: "SET_STORE",
+        [key]: state[key],
+      });
+    }
   }
 };
